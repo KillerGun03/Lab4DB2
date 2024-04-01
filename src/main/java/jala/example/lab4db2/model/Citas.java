@@ -4,27 +4,34 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Esta es la clase modelo para 'Citas'.
+ * Se mapea a la colección 'citas' en la base de datos.
+ */
 @Document(collection = "citas")
 public class Citas {
+    // El ID de la cita.
     @Id
     private String id;
+
+    // La fecha y hora de la cita.
     private String fechaHora;
+
+    // El motivo de la cita.
     private String motivo;
+
+    // El estado de la cita.
     private String estado;
 
+    // Referencia al paciente asociado con esta cita.
     @DBRef
     private Pacientes pacientes;
 
+    // Referencia al médico asociado con esta cita.
     @DBRef
     private Medicos medicos;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
+    // Getters y setters para cada campo.
 
     public String getFechaHora() {
         return fechaHora;

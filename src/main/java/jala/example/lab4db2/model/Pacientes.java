@@ -3,27 +3,33 @@ package jala.example.lab4db2.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * Esta es la clase modelo para 'Pacientes'.
+ * Mapea a la colección 'pacientes' en la base de datos.
+ */
 @Document(collection = "pacientes")
 public class Pacientes {
+    // El ID del paciente.
     @Id
     private String id;
+    // El nombre del paciente
     private String nombre;
+    // La fecha de nacimiento del paciente
     private String fechaNacimiento;
+    // El genero del paciente
     private String genero;
+    // La direccion del paciente
     private String direccion;
+    // El telefono del paciente
     private String telefono;
+    // El numero de seguro medico del paciente
     private String seguroMedico;
+    // Las alergias del paciente
     private String alergias;
+    // El tipo de sangre del paciente
     private String tipoSangre;
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
+    // Getters y setters para cada campo.
     public String getNombre() {
         return nombre;
     }

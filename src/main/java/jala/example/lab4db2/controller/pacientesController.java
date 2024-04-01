@@ -10,12 +10,20 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Este es un Controlador Rest para manejar las solicitudes relacionadas con la coleccion 'pacientes'.
+ * Utiliza el pacientesRepository para interactuar con la base de datos.
+ */
 @RestController
 @RequestMapping("/pacientes")
 public class pacientesController {
     @Autowired
     private pacientesRepository repository;
 
+    /**
+     * Este método devuelve todos los registros de la coleccion pacientes de la base de datos.
+     * Si no se encuentran registros, devuelve un estado NO_CONTENT.
+     */
     @GetMapping
     public ResponseEntity<List<Pacientes>> getAllPacientes() {
         try {
@@ -29,6 +37,10 @@ public class pacientesController {
         }
     }
 
+    /**
+     * Este método crea un nuevo registro en la coleccion pacientes en la base de datos.
+     * El nuevo paciente se pasa en el cuerpo de la solicitud.
+     */
     @PostMapping
     public ResponseEntity<Pacientes> createPacientes(@RequestBody Pacientes paciente) {
         try {
@@ -39,6 +51,10 @@ public class pacientesController {
         }
     }
 
+    /**
+     * Este método actualiza un paciente existente de la base de datos.
+     * El id del paciente a actualizar se pasa en la variable de la ruta y los nuevos datos se pasan en el cuerpo de la solicitud.
+     */
     @PutMapping("/{id}")
     public ResponseEntity<Pacientes> updatePacientes(@PathVariable String id, @RequestBody Pacientes paciente) {
         Optional<Pacientes> pacienteData = repository.findById(id);
@@ -59,6 +75,10 @@ public class pacientesController {
         }
     }
 
+    /**
+     * Este método elimina un paciente de la base de datos.
+     * El id del paciente a eliminar se pasa en la variable de la ruta.
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<HttpStatus> deletePacientes(@PathVariable String id) {
         try {
